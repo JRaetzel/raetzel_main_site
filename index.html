@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raetzel - App Development</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>R</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       .transition-theme {
@@ -20,12 +21,6 @@
         <a href="#services" class="hover:underline">Services</a>
         <a href="#portfolio" class="hover:underline">Portfolio</a>
         <a href="#contact" class="hover:underline">Contact</a>
-        <button
-          id="themeToggle"
-          class="ml-4 px-4 py-1 rounded-full text-sm font-semibold border border-gray-500 hover:border-indigo-600 hover:text-indigo-600 transition-all"
-        >
-          Toggle Light Mode
-        </button>
       </nav>
     </header>
 
@@ -62,14 +57,16 @@
       <h2 class="text-3xl font-bold text-center mb-12">Our Portfolio</h2>
       <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         <div class="bg-gray-800 rounded-2xl shadow-md p-6">
+          <img src="https://via.placeholder.com/100x100?text=MP" alt="Math Parent 101 Icon" class="w-20 h-20 mb-4 mx-auto rounded" />
           <h3 class="text-2xl font-bold mb-2">Math Parent 101</h3>
           <p class="mb-4">An educational companion helping parents support their children's math journey, complete with tools and strategies.</p>
-          <a href="https://apps.apple.com/us/app/math-parent-101/id6744328130" class="text-indigo-400 hover:underline">View Details</a>
+          <a href="#" class="text-indigo-400 hover:underline">View Details</a>
         </div>
         <div class="bg-gray-800 rounded-2xl shadow-md p-6">
+          <img src="https://via.placeholder.com/100x100?text=WTE" alt="What to Eat?? Icon" class="w-20 h-20 mb-4 mx-auto rounded" />
           <h3 class="text-2xl font-bold mb-2">What to Eat??</h3>
           <p class="mb-4">A privacy-focused, AI-powered app that helps users decide what to eat based on preferences and ingredients on hand.</p>
-          <a href="https://apps.apple.com/us/app/what-to-eat/id6569253360" class="text-indigo-400 hover:underline">View Details</a>
+          <a href="#" class="text-indigo-400 hover:underline">View Details</a>
         </div>
       </div>
     </section>
@@ -94,39 +91,7 @@
     </footer>
 
     <script>
-      // Set year
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      // Theme toggle logic
-      const toggleBtn = document.getElementById("themeToggle");
-      toggleBtn.addEventListener("click", () => {
-        const body = document.body;
-        body.classList.toggle("bg-gray-900");
-        body.classList.toggle("text-white");
-        body.classList.toggle("bg-white");
-        body.classList.toggle("text-gray-900");
-
-        document.querySelectorAll(".bg-gray-800").forEach((el) => {
-          el.classList.toggle("bg-gray-800");
-          el.classList.toggle("bg-gray-100");
-        });
-
-        document.querySelectorAll(".bg-gray-900").forEach((el) => {
-          el.classList.toggle("bg-gray-900");
-          el.classList.toggle("bg-white");
-        });
-
-        document.querySelectorAll("input, textarea").forEach((el) => {
-          el.classList.toggle("bg-gray-700");
-          el.classList.toggle("text-white");
-          el.classList.toggle("placeholder-gray-400");
-          el.classList.toggle("bg-white");
-          el.classList.toggle("text-gray-900");
-          el.classList.toggle("placeholder-gray-500");
-        });
-
-        toggleBtn.textContent = toggleBtn.textContent.includes("Light") ? "Toggle Dark Mode" : "Toggle Light Mode";
-      });
     </script>
   </body>
 </html>
