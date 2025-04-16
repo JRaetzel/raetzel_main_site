@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raetzel - App Development</title>
+    <title>Raetzel - App Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       .transition-theme {
@@ -22,53 +22,28 @@
       </button>
     </div>
 
-    <!-- Hero Section -->
-    <section class="text-center py-20 px-4">
-      <h1 class="text-5xl font-extrabold mb-4">Raetzel</h1>
-      <p class="text-xl max-w-xl mx-auto">Innovative App Development for a Smarter Tomorrow</p>
-      <div class="mt-8">
-        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl shadow-lg transition-all">Get in Touch</button>
-      </div>
+    <!-- Portfolio Header -->
+    <section class="text-center py-12 px-4">
+      <h1 class="text-5xl font-extrabold mb-4">Our Work</h1>
+      <p class="text-lg max-w-2xl mx-auto">Check out some of the mobile applications we’ve developed for modern-day needs.</p>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="bg-gray-800 py-16 px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">What We Do</h2>
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div class="bg-gray-900 p-6 rounded-2xl shadow-md">
-          <h3 class="text-2xl font-semibold mb-4">iOS Apps</h3>
-          <p>We build sleek, performant mobile apps tailored to your business goals using modern frameworks.</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-2xl shadow-md">
-          <h3 class="text-2xl font-semibold mb-4">UI/UX Design</h3>
-          <p>Delight users with intuitive and engaging interfaces that are a joy to use.</p>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-2xl shadow-md">
-          <h3 class="text-2xl font-semibold mb-4">Cloud Integration</h3>
-          <p>We integrate cloud-native services for scalability, reliability, and performance.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
+    <!-- Portfolio Grid -->
     <section class="py-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-6">About Raetzel</h2>
-        <p class="text-lg leading-relaxed">Founded by a team of passionate developers, Raetzel is dedicated to crafting digital solutions that redefine industries. From concept to deployment, we collaborate closely with our clients to bring ideas to life.</p>
-      </div>
-    </section>
+      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <!-- Math Parent 101 -->
+        <div class="bg-gray-800 rounded-2xl shadow-md p-6 transition-colors">
+          <h2 class="text-2xl font-bold mb-2">Math Parent 101</h2>
+          <p class="mb-4">An intuitive educational companion designed to help parents support their children's math journey at home, complete with explanations, tools, and problem-solving strategies.</p>
+          <a href="#" class="text-indigo-400 hover:underline">View Details</a>
+        </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gray-800 py-16 px-4">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-4">Let’s Build Something Together</h2>
-        <p class="mb-8">Contact us to start your app journey. We’d love to hear your ideas!</p>
-        <form class="space-y-4">
-          <input type="text" placeholder="Name" class="w-full p-3 rounded bg-gray-700 text-white placeholder-gray-400" />
-          <input type="email" placeholder="Email" class="w-full p-3 rounded bg-gray-700 text-white placeholder-gray-400" />
-          <textarea placeholder="Tell us about your project..." class="w-full p-3 rounded bg-gray-700 text-white placeholder-gray-400 h-32"></textarea>
-          <button class="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-2xl text-white font-semibold shadow-lg">Send Message</button>
-        </form>
+        <!-- What to Eat?? -->
+        <div class="bg-gray-800 rounded-2xl shadow-md p-6 transition-colors">
+          <h2 class="text-2xl font-bold mb-2">What to Eat??</h2>
+          <p class="mb-4">An AI-assisted meal planning app that helps indecisive eaters figure out what to eat next, based on preferences, time, and available ingredients—without storing personal data.</p>
+          <a href="#" class="text-indigo-400 hover:underline">View Details</a>
+        </div>
       </div>
     </section>
 
@@ -85,31 +60,14 @@
       const toggleBtn = document.getElementById('themeToggle');
       toggleBtn.addEventListener('click', () => {
         const body = document.body;
-        const services = document.getElementById('services');
-        const contact = document.getElementById('contact');
-
         body.classList.toggle('bg-gray-900');
         body.classList.toggle('text-white');
         body.classList.toggle('bg-white');
         body.classList.toggle('text-gray-900');
 
-        services.classList.toggle('bg-gray-800');
-        services.classList.toggle('bg-gray-100');
-
-        contact.classList.toggle('bg-gray-800');
-        contact.classList.toggle('bg-gray-100');
-
-        const inputs = document.querySelectorAll('input, textarea');
-        inputs.forEach((el) => {
-          el.classList.toggle('bg-gray-700');
-          el.classList.toggle('text-white');
-          el.classList.toggle('placeholder-gray-400');
-
-          el.classList.toggle('bg-white');
-          el.classList.toggle('border');
-          el.classList.toggle('border-gray-300');
-          el.classList.toggle('text-gray-900');
-          el.classList.toggle('placeholder-gray-500');
+        document.querySelectorAll('.bg-gray-800').forEach(el => {
+          el.classList.toggle('bg-gray-800');
+          el.classList.toggle('bg-gray-100');
         });
 
         toggleBtn.textContent = toggleBtn.textContent.includes('Light') ? 'Toggle Dark Mode' : 'Toggle Light Mode';
