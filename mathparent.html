@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Parent 101</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>MP</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white py-6 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <h1 class="text-3xl font-bold">Math Parent 101</h1>
+        <nav class="space-x-4">
+          <a href="#features" class="hover:underline">Features</a>
+          <a href="#screens" class="hover:underline">Screens</a>
+          <a href="#contact" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-20 px-4 bg-indigo-50">
+      <h2 class="text-4xl font-extrabold mb-4">Support Your Child's Math Journey</h2>
+      <p class="text-lg max-w-2xl mx-auto mb-6">Math Parent 101 equips you with the tools and explanations you need to confidently guide your child through math homework and learning—without confusion.</p>
+      <a href="#contact" class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-700 transition">Get Started</a>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl font-bold text-center mb-12">App Features</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 border rounded shadow">
+            <h4 class="text-xl font-semibold mb-2">Grade-Level Guides</h4>
+            <p>Navigate by grade to access age-appropriate concepts, examples, and how-to explanations.</p>
+          </div>
+          <div class="bg-white p-6 border rounded shadow">
+            <h4 class="text-xl font-semibold mb-2">Step-by-Step Solutions</h4>
+            <p>Learn how to solve math problems just like your child’s teacher would explain them in class.</p>
+          </div>
+          <div class="bg-white p-6 border rounded shadow">
+            <h4 class="text-xl font-semibold mb-2">Parent Tips</h4>
+            <p>Gain strategies and positive reinforcement techniques to make math less stressful at home.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screens" class="py-16 px-4 bg-indigo-50">
+      <div class="max-w-6xl mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-8">App Preview</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <img src="https://via.placeholder.com/300x600?text=Home+Screen" alt="App Home Screen" class="mx-auto rounded shadow" />
+          <img src="https://via.placeholder.com/300x600?text=Lesson+View" alt="Lesson View" class="mx-auto rounded shadow" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-4">Stay Informed</h3>
+        <p class="mb-6">Want to know when Math Parent 101 is available? Join our mailing list.</p>
+        <form class="space-y-4">
+          <input type="email" placeholder="Your email" class="w-full p-3 border rounded" />
+          <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow hover:bg-indigo-700 transition">Notify Me</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-500 text-sm bg-gray-100">
+      © <span id="year"></span> Math Parent 101. All rights reserved.
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

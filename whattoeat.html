@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What to Eat??</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>W</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white text-gray-900 font-sans">
+    <!-- Header -->
+    <header class="bg-green-600 text-white py-6 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <h1 class="text-3xl font-bold">What to Eat??</h1>
+        <nav class="space-x-4">
+          <a href="#features" class="hover:underline">Features</a>
+          <a href="#screens" class="hover:underline">Screens</a>
+          <a href="#contact" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-20 px-4 bg-green-50">
+      <h2 class="text-4xl font-extrabold mb-4">Let AI Decide What to Eat</h2>
+      <p class="text-lg max-w-2xl mx-auto mb-6">Struggling with indecision at mealtime? What to Eat?? is your privacy-first, AI-powered meal decision helper that simplifies your food choices without storing any personal data.</p>
+      <a href="#contact" class="bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition">Get the App</a>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl font-bold text-center mb-12">App Features</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 border rounded shadow">
+            <h4 class="text-xl font-semibold mb-2">AI Suggestions</h4>
+            <p>Input your cravings or pantry items and let our smart assistant help you decide on the spot.</p>
+          </div>
+          <div class="bg-white p-6 border rounded shadow">
+            <h4 class="text-xl font-semibold mb-2">No Data Collection</h4>
+            <p>Your privacy is our priority. No accounts, no tracking, just fast meal ideas.</p>
+          </div>
+          <div class="bg-white p-6 border rounded shadow">
+            <h4 class="text-xl font-semibold mb-2">Meal Variety</h4>
+            <p>Discover something new or fall back on comforting favorites. The choice is always yours to make (or not!).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screens" class="py-16 px-4 bg-green-50">
+      <div class="max-w-6xl mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-8">App Preview</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <img src="https://via.placeholder.com/300x600?text=Prompt+Screen" alt="Prompt Screen" class="mx-auto rounded shadow" />
+          <img src="https://via.placeholder.com/300x600?text=Results+Screen" alt="Results Screen" class="mx-auto rounded shadow" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-4">Be First to Try It</h3>
+        <p class="mb-6">Want to be notified when What to Eat?? launches? Join our early access list.</p>
+        <form class="space-y-4">
+          <input type="email" placeholder="Your email" class="w-full p-3 border rounded" />
+          <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-lg shadow hover:bg-green-700 transition">Notify Me</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-500 text-sm bg-gray-100">
+      © <span id="year"></span> What to Eat?? All rights reserved.
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
