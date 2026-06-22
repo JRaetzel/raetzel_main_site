@@ -1,150 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raetzel - App Development</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>R</text></svg>">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .transition-theme {
-        transition: background-color 0.5s, color 0.5s;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raetzel Resolutions | Practical Software Solutions</title>
+
+  <meta name="description" content="Raetzel Resolutions LLC builds custom apps, websites, automations, and communication tools for small businesses, co-ops, churches, and organizations." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --bg-card: #111827;
+      --bg-section: #1e293b;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --muted-dark: #94a3b8;
+      --primary: #4f46e5;
+      --secondary: #7c3aed;
+      --accent: #06b6d4;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(2, 6, 23, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.35);
+      font-weight: 900;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .nav-button,
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .nav-button {
+      padding: 10px 18px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .button-primary {
+      padding: 15px 28px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 16px 40px rgba(79, 70, 229, 0.35);
+    }
+
+    .button-secondary {
+      padding: 15px 28px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .button-primary:hover,
+    .button-secondary:hover,
+    .nav-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 130px 0 110px;
+      background:
+        radial-gradient(circle at top left, rgba(79, 70, 229, 0.24), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(6, 182, 212, 0.16), transparent 30%),
+        linear-gradient(135deg, #020617 0%, #0f172a 55%, #111827 100%);
+    }
+
+    .hero-content {
+      max-width: 860px;
+      text-align: center;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #dbeafe;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      background: rgba(79, 70, 229, 0.12);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      line-height: 1.03;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-alt {
+      background: var(--bg-section);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 54px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(99, 102, 241, 0.55);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.7rem;
+      margin-bottom: 22px;
+      background: rgba(79, 70, 229, 0.14);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .card a {
+      color: #a5b4fc;
+      font-weight: 700;
+    }
+
+    .project-card {
+      min-height: 260px;
+    }
+
+    .project-tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.12);
+      color: #67e8f9;
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .why-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .why-item {
+      padding: 26px;
+      border-radius: 20px;
+      background: rgba(2, 6, 23, 0.35);
+      border: 1px solid var(--border);
+    }
+
+    .why-item h3 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .why-item p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(79, 70, 229, 0.22), transparent 42%),
+        var(--bg);
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 660px;
+      margin: 0 auto 32px;
+      font-size: 1.12rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      padding: 38px 0;
+      color: var(--muted-dark);
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 950px) {
+      .services-grid,
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-    </style>
-  </head>
-  <body class="bg-gray-900 text-white font-sans transition-theme">
-    <!-- Navigation Bar -->
-    <header class="flex justify-between items-center p-6 shadow-md bg-gray-800">
-      <h1 class="text-2xl font-bold">Raetzel</h1>
-      <nav class="space-x-4">
-        <a href="#home" class="hover:underline">Home</a>
-        <a href="#services" class="hover:underline">Services</a>
-        <a href="#portfolio" class="hover:underline">Portfolio</a>
-        <a href="#contact" class="hover:underline">Contact</a>
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        height: auto;
+        padding: 18px 0;
+        align-items: flex-start;
+        gap: 16px;
+        flex-direction: column;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+      }
+
+      .nav-button {
+        display: none;
+      }
+
+      .hero {
+        padding: 95px 0 80px;
+      }
+
+      .services-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="logo">
+        <span class="logo-mark">RR</span>
+        <span>Raetzel Resolutions</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="nav-button" href="#contact">Request a Project</a></li>
+        </ul>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="text-center py-20 px-4">
-      <h2 class="text-5xl font-extrabold mb-4">Innovative App Development</h2>
-      <p class="text-xl max-w-xl mx-auto">At Raetzel, we design and develop apps that solve real-world problems with elegant, scalable solutions.</p>
-      <div class="mt-8">
-        <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl shadow-lg transition-all"><a href="#contact">Get in Touch</a></button>
-      </div>
-    </section>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-content">
+        <span class="eyebrow">Apps • Websites • Automation • Cloud Tools</span>
 
-    <!-- Services Section -->
-    <section id="services" class="bg-gray-800 py-16 px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">What We Do</h2>
-      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div class="bg-gray-900 p-6 rounded-2xl shadow-md">
-          <h3 class="text-2xl font-semibold mb-4">iOS & Android Apps</h3>
-          <p>We build sleek, performant mobile apps tailored to your business goals using modern frameworks.</p>
-          <a href="#portfolio" class="text-indigo-400 hover:underline">Learn More</a>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-2xl shadow-md">
-          <h3 class="text-2xl font-semibold mb-4">UI/UX Design</h3>
-          <p>Delight users with intuitive and engaging interfaces that are a joy to use.</p>
-          <a href="#uiux" class="text-indigo-400 hover:underline">Learn More</a>
-        </div>
-        <div class="bg-gray-900 p-6 rounded-2xl shadow-md">
-          <h3 class="text-2xl font-semibold mb-4">Cloud Integration</h3>
-          <p>We integrate cloud-native services for scalability, reliability, and performance.</p>
-          <a href="#cloudservices" class="text-indigo-400 hover:underline">Learn More</a>
-       
+        <h1>Practical Software Solutions for Real-World Problems</h1>
+
+        <p>
+          Raetzel Resolutions LLC builds custom apps, websites, automations,
+          and communication systems for small businesses, co-ops, churches,
+          schools, and growing organizations.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="button-primary">Request a Project</a>
+          <a href="#portfolio" class="button-secondary">View Portfolio</a>
         </div>
       </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">Our Portfolio</h2>
-      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-          <img src="images\mathparent.png" alt="Math Parent 101 Icon" class="w-20 h-20 mb-4 mx-auto rounded" />
-          <h3 class="text-2xl font-bold mb-2">Math Parent 101</h3>
-          <p class="mb-4">An educational companion helping parents support their children's math journey, complete with tools and strategies.</p>
-          <a href="mathparent.html" class="text-indigo-400 hover:underline">Learn More!</a><br>
-          <p><a href="https://apps.apple.com/us/app/math-parent-101/id6744328130" class="text-indigo-400 hover:underline">Get the App!</a></p>
+    <section id="services" class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>What We Build</h2>
+          <p>
+            Simple, useful tools designed around the way your organization
+            actually works.
+          </p>
         </div>
-        <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-          <img src="images/whattoeat.png" alt="What to Eat?? Icon" class="w-20 h-20 mb-4 mx-auto rounded" />
-          <h3 class="text-2xl font-bold mb-2">What to Eat??</h3>
-          <p class="mb-4">A privacy-focused app that helps users decide what to eat based on preferences and types of ingredients.</p>
-          <a href="whattoeat.html" class="text-indigo-400 hover:underline">Learn More!</a><br>
-          <p><a href="https://apps.apple.com/us/app/what-to-eat/id6569253360" class="text-indigo-400 hover:underline">Get the App!</a></p>
+
+        <div class="grid services-grid">
+          <article class="card">
+            <div class="icon">📱</div>
+            <h3>Custom Apps</h3>
+            <p>
+              iPhone, iPad, Mac, and web-based tools built for your workflow,
+              your team, and your goals.
+            </p>
+            <a href="#contact">Start an app project →</a>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌐</div>
+            <h3>Websites</h3>
+            <p>
+              Clean, modern websites for businesses, ministries, apps,
+              organizations, and special projects.
+            </p>
+            <a href="#contact">Build a website →</a>
+          </article>
+
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>Automation</h3>
+            <p>
+              Google Sheets, email, SMS, forms, reports, and workflows that
+              save time and reduce mistakes.
+            </p>
+            <a href="#contact">Automate a process →</a>
+          </article>
+
+          <article class="card">
+            <div class="icon">☁️</div>
+            <h3>Cloud Systems</h3>
+            <p>
+              Firebase, Supabase, databases, user access, communication tools,
+              and backend systems.
+            </p>
+            <a href="#contact">Plan a system →</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- UI UX Design Section -->
-    <section id="uiux" class="py-16 px-4">
-      <h2 class="text-3xl font-bold text-center mb-12">UI/UX Design</h2>
-      <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-          <img src="images\Miro-UIUX-example1.png" alt="placeholder" class="w-20 h-20 mb-4 mx-auto rounded" />
-          <h3 class="text-2xl font-bold mb-2">UI/UX design 1</h3>
-          <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sequi..</p>
-          <a href="#" class="text-indigo-400 hover:underline">View Details</a>
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Work</h2>
+          <p>
+            A mix of public apps and practical internal tools built to solve
+            real problems.
+          </p>
         </div>
-        <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-          <img src="images\Miro-UIUX-example1.png" alt="placeholder" class="w-20 h-20 mb-4 mx-auto rounded" />
-          <h3 class="text-2xl font-bold mb-2">UI/UX design 2</h3>
-          <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sequi..</p>
-          <a href="#" class="text-indigo-400 hover:underline">View Details</a>
+
+        <div class="grid projects-grid">
+          <article class="card project-card">
+            <span class="project-tag">Public App</span>
+            <h3>Math Parent 101</h3>
+            <p>
+              An educational companion app that helps parents support their
+              children’s math journey with tools, explanations, and strategies.
+            </p>
+            <a href="mathparent.html">Learn more →</a>
+          </article>
+
+          <article class="card project-card">
+            <span class="project-tag">Public App</span>
+            <h3>What to Eat??</h3>
+            <p>
+              A privacy-focused app that helps users decide what to eat based
+              on preferences, ingredients, and meal ideas.
+            </p>
+            <a href="whattoeat.html">Learn more →</a>
+          </article>
+
+          <article class="card project-card">
+            <span class="project-tag">Communication System</span>
+            <h3>Communications 2.0</h3>
+            <p>
+              A Google Sheets, email, and Twilio SMS system for sending group
+              messages, tracking replies, logging history, and managing opt-ins.
+            </p>
+            <a href="#contact">Ask about this system →</a>
+          </article>
+
+          <article class="card project-card">
+            <span class="project-tag">Organization Tool</span>
+            <h3>Co-op Management Tools</h3>
+            <p>
+              Attendance, scheduling, service-hour tracking, incident reporting,
+              and internal tools designed for homeschool co-ops and small teams.
+            </p>
+            <a href="#contact">Discuss a similar tool →</a>
+          </article>
         </div>
-</div>
-</section>
-
-<!-- Cloud Services Section -->
-        <section id="cloudservices" class="py-16 px-4">
-          <h2 class="text-3xl font-bold text-center mb-12">Cloud Services</h2>
-          <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-              <img src="images/cloud-example.png" alt="" class="w-20 h-20 mb-4 mx-auto rounded" />
-              <h3 class="text-2xl font-bold mb-2">Cloud Services 1</h3>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sequi..</p>
-              <a href="#" class="text-indigo-400 hover:underline">View Details</a>
-            </div>
-              <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-                <img src="images/cloud-example.png" alt="placeholder" class="w-20 h-20 mb-4 mx-auto rounded" />
-                <h3 class="text-2xl font-bold mb-2">Cloud Services 2</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sequi..</p>
-                <a href="#" class="text-indigo-400 hover:underline">View Details</a>
-              </div>
-              <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-                <img src="images/cloud-example.png" alt="placeholder" class="w-20 h-20 mb-4 mx-auto rounded" />
-                <h3 class="text-2xl font-bold mb-2">Cloud Services 3</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sequi..</p>
-                <a href="#" class="text-indigo-400 hover:underline">View Details</a>
-              </div>
-              <div class="bg-gray-800 rounded-2xl shadow-md p-6">
-                <img src="images/cloud-example.png" alt="placeholder" class="w-20 h-20 mb-4 mx-auto rounded" />
-                <h3 class="text-2xl font-bold mb-2">Cloud Services 4</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sequi..</p>
-                <a href="#" class="text-indigo-400 hover:underline">View Details</a>
-              </div>
-            </div>
-          </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gray-800 py-16 px-4">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-4">Let’s Build Something Together</h2>
-        <p class="mb-8"></p>
-
-        <script src="https://js-na2.hsforms.net/forms/embed/242575436.js" defer></script>
-<div class="hs-form-frame" data-region="na2" data-form-id="01a0c131-5e15-4c2e-b947-968fb42a0fc8" data-portal-id="242575436"></div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-6 text-gray-400 text-sm">
-      © <span id="year"></span> Raetzel. All rights reserved.
-    </footer>
+    <section id="why" class="section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Raetzel Resolutions?</h2>
+          <p>
+            Built for people who need practical tools, clear communication,
+            and solutions that actually fit their day-to-day work.
+          </p>
+        </div>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+        <div class="grid why-grid">
+          <div class="why-item">
+            <h3>Practical First</h3>
+            <p>Every project starts with the real problem, not unnecessary complexity.</p>
+          </div>
+
+          <div class="why-item">
+            <h3>Small-Team Friendly</h3>
+            <p>Solutions designed for businesses, churches, co-ops, and organizations.</p>
+          </div>
+
+          <div class="why-item">
+            <h3>Clear Communication</h3>
+            <p>Plain-language planning from idea to launch, without tech confusion.</p>
+          </div>
+
+          <div class="why-item">
+            <h3>Built to Grow</h3>
+            <p>Tools can start simple and expand as your needs grow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container">
+        <h2>Have an idea or a problem that needs solved?</h2>
+        <p>
+          Whether you need an app, website, automation, communication system,
+          or custom internal tool, Raetzel Resolutions can help turn the idea
+          into something useful.
+        </p>
+
+        <a href="mailto:contact@raetzel.org" class="button-primary">Contact Raetzel Resolutions</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© 2026 Raetzel Resolutions LLC. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="mailto:contact@raetzel.org">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
